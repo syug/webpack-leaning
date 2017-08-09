@@ -3,6 +3,7 @@ import _ from 'lodash';
 // import Icon from './icon.png';
 // import Data from './data.xml';
 import printMe from './print.js';
+import './styles.css';
 
 
 function component() {
@@ -27,4 +28,16 @@ function component() {
   return element;
 }
 
-document.body.appendChild(component());
+// document.body.appendChild(component());
+let element = component(); // Store the element to re-render on print.js changes
+document.body.appendChild(element);
+
+if (module.hot) {
+  module.hot.accept('./print.js', function() {
+    console.log('Accepting the updated printMe module!');
+    // printMe();
+    document.body.removeChild(element);
+    element = component(); // Re-render the "component" to update the click handler
+    document.body.appendChild(element);
+  })
+}
