@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'NotoSansCJKjp-Medium';
+    src: url('./fonts/NotoSansCJKjp-Medium.eot') format('eot'), url('./fonts/NotoSansCJKjp-Medium.ttf') format('ttf'), url('./fonts/NotoSansCJKjp-Medium.otf') format('otf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+.hello {
+    color: red;
+    font-family: 'NotoSansCJKjp-Medium';
+    background: url('./icon.png');
+}
