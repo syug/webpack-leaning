@@ -1,3 +1,5 @@
 body {
-  background: #EEE;
+  background: #EEE url(./img/webpack.svg);
+  background-size: 50px;
+  background-blend-mode: soft-light;
 }

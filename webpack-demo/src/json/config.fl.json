@@ -1,0 +1,4 @@
+{
+  "logo": "logo.png",
+  "logo2": require.resolve("logo.png")
+}

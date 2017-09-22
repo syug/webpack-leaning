@@ -24,8 +24,21 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
+  recordsPath: path.resolve(__dirname, 'records.json'),
   module: {
-    rules: [{
+    rules: [
+      {
+        test: /\.fl\.json$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash]/conf.[ext]'
+            }
+          }
+        ]
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',
@@ -35,7 +48,12 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader'
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[hash].[ext]'
+            }
+          }
         ]
       },
       {

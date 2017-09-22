@@ -5,6 +5,21 @@ import _ from 'lodash';
 import printMe from './print.js';
 import './styles.css';
 
+import webpackLogoImg from './img/webpack.svg';
+console.log(webpackLogoImg); // by file-loader, webpackLogoImg is just a path string
+
+// Json
+import json from './json/config.json';
+console.log('json:', json, 'json.logo:', json.logo); // json will be a javascript object
+
+console.log(require('./img/logo.png')); // work
+// var Logo = require(json.logo); // do not work
+// console.log(Logo);
+
+// Json by file-loader
+import json2 from './json/config.fl.json';
+console.log('json2=', json2); // based on webpack rule '.fl.json' will be loaded by file-loader. So json2 will be just a file path.
+
 
 function component() {
   var element = document.createElement('div');
@@ -15,9 +30,9 @@ function component() {
   // element.classList.add('hello');
 
   // Add the image
-  // var myIcon = new Image();
-  // myIcon.src = Icon;
-  // element.appendChild(myIcon);
+  var myIcon = new Image(100, 100);
+  myIcon.src = webpackLogoImg;
+  element.appendChild(myIcon);
 
   // console.log(Data);
 
@@ -29,11 +44,11 @@ function component() {
 }
 
 // document.body.appendChild(component());
-let element = component(); // Store the element to re-render on print.js changes
+let element = component(); // Store the eçlement to re-render on print.js changes
 document.body.appendChild(element);
 
 if (module.hot) {
-  module.hot.accept('./print.js', function() {
+  module.hot.accept('./print.js', function () {
     console.log('Accepting the updated printMe module!');
     // printMe();
     document.body.removeChild(element);
@@ -41,3 +56,4 @@ if (module.hot) {
     document.body.appendChild(element);
   })
 }
+
